@@ -1,0 +1,50 @@
+<%- include('../../partials/header.ejs') %>
+<%- include('../../partials/navbar.ejs') %>
+
+<div class="container">
+    <hr>
+    <h2>Usuários</h2>
+    <a class="btn btn-success" href="/admin/user/create">Cadastrar usuário</a>
+    <hr>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Email</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% users.forEach(user => { %>
+            <tr>
+                <th><%= user.id %></th>
+                <td><%= user.email %></td>
+                <td>
+                    <a href="/admin/user/edit/<%= user.id %>" class="btn btn-warning">Editar</a>
+                    
+                    <form method="POST" action="/user/delete" style="display: inline;" onsubmit="confirmarDelecao(event, this)">
+                        <input type="hidden" name="id" value="<%= user.id %>">
+                        <button class="btn btn-danger">Deletar</button>
+                    </form>
+                </td>
+            </tr>
+            <% }) %>
+
+        </tbody>
+    </table>
+</div>
+
+<script>
+
+    function confirmarDelecao(event, form){
+        event.preventDefault();
+        
+        var decisao = confirm('Você deseja excluir essa categoria?');
+        if(decisao){
+            form.submit();
+        }
+    }
+
+</script>
+
+<%- include('../../partials/footer.ejs') %>

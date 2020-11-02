@@ -1,0 +1,22 @@
+npm init
+npm install --save express
+npm install --save sequelize
+npm install --save mysql2
+npm install --save body-parser
+npm install --save ejs
+npm install --save slugify (Biblioteca para transformar STRING em Slug)
+npm install --save bcryptjs (Biblioteca para gerar senhas HASH)
+npm install express-session --save (Sessões com Express)
+
+Criar index.js
+Configurar View Engine
+Configurar body-parser
+Arquivos estaticos (CSS, JS, Imagens)
+
+Database
+
+Separacao estilo MVC
+Criacao das Models
+Criacao da View de Categories
+
+ 

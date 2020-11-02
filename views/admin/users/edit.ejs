@@ -1,0 +1,21 @@
+<%- include('../../partials/header.ejs') %>
+<%- include('../../partials/navbar.ejs') %>
+
+<div class="container">
+    <div class="card mt-5">
+        <div class="card-header">
+            <h2>Edição de Usuário</h2>
+            <small class="text-danger">Em Manutenção</small>
+        </div>
+        <div class="card-body">
+            <form method="" action="">
+                <input class='form-control' type="email" name="email" value="<%= user.email %>" placeholder="exemplo@exemplo.com"><br>
+                <input class='form-control' type="password" name="password" placeholder="******"><br>
+                <button class="btn btn-success btn-block" type="submit">Atualizar</button>
+                <input type="text" name="id" value="<%= user.id %>">
+            </form>
+        </div>
+    </div>
+</div>
+
+<%- include('../../partials/footer.ejs') %>

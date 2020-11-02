@@ -1,0 +1,58 @@
+<%- include('../../partials/header.ejs') %>
+<%- include('../../partials/navbar.ejs') %>
+
+<div class="container">
+    <hr>
+    <div class="card">
+        <div class="card-header">
+            <h2>Edição de artigo</h2>
+        </div>
+        <div class="card-body">
+            <form method="POST" action="/article/update">
+                <input class="form-control" type="text" name="title" placeholder="Define o título do artigo" value="<%= article.title %>">
+                <br>
+                <textarea id="article" name="body" rows="15" class="form-control" placeholder="Escreve seu artigo aqui!"></textarea>
+                <br>
+                <select name="categoryId" class="form-control">
+                    <% categories.forEach(category => { %>
+                        
+                        <% if(category.id == article.categoryId) { %>
+                            <option value="<%= category.id %>" selected><%= category.title %></option>
+                        <% } else { %>
+                            <option value="<%= category.id %>"><%= category.title %></option>
+                        <% } %>
+
+                    <% }) %>
+                </select>
+                <br>
+                <input type="hidden" name="articleId" value="<%= article.id %>">
+                <button class="btn btn-success">Atualizar</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Para carregar a edição no TinyMCE é necessario colocar dentro
+deu um HTML, e o HTML renderiza ao inicializar -->
+<div id="conteudo" style="display: none;">
+    <%- article.body %>
+</div>
+
+<%- include('../../partials/footer.ejs') %>
+
+<script src="/tinymce/tinymce.min.js"></script>
+
+<script>
+    tinymce.init({
+        selector: '#article',
+        language: 'pt_BR',
+        plugins: [
+            'advlist autolink link image lists print preview hr searchreplace wordcount fullscreen media save table paste emoticons'
+        ],
+        //Inicializa com conteudo
+        init_instance_callback: () => {
+            tinymce.get('article').setContent($('#conteudo').html())
+        }
+    });
+
+</script>

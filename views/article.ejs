@@ -1,0 +1,23 @@
+<%- include('./partials/header.ejs') %>
+<%- include('./partials/homeNavbar.ejs') %>
+
+<body>
+    <div class="container">
+        <hr>
+        <div class="card">
+            <div class="card-header">
+                <h2><%= article.title %></h2>
+            </div>
+            <div class="card-body">
+                <!-- Para exibir passando parametros HTML,
+                tem que passar entre os parametros
+                '<%-  %>' -->
+                
+                <%- article.body %>
+            </div>
+        </div>
+        <br>
+    </div>
+</body>
+
+<%- include('./partials/footer.ejs') %>
